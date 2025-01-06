@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card" style="width: 40rem;">
+    <div class="card-body">
+      <h4 class="card-title">Username : {{UserRecord.username}}</h4>
+      <h5 class="card-title">Name : {{UserRecord.first_name}} {{UserRecord.last_name}}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Email: {{UserRecord.email}}</li>
+      <li class="list-group-item">Phone: {{UserRecord.phone}}</li>
+      <li class="list-group-item">Date Of Joining: {{UserRecord.date_joined}}</li>
+      <li class="list-group-item">Address: {{UserRecord.address}}</li>
+      <li class="list-group-item">City : {{UserRecord.city}}</li>
+      <li class="list-group-item">State : {{UserRecord.state}}</li>
+      <li class="list-group-item">Zipcode: {{UserRecord.zip_code}}</li>
+      <li class="list-group-item">Country: {{UserRecord.country}}</li>
+    </ul>
+  </div>
+  <br>
+  <a href="{% url 'home' %}" class="btn btn-primary">Back</a>
+  <a href="{% url 'edit_record' UserRecord.id %}" class="btn btn-secondary">Edit</a>
+  <a href="{% url 'delete_user' UserRecord.id %}" class="btn btn-danger">Delete</a>
+  
+{% endblock %}

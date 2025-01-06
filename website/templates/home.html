@@ -2,6 +2,29 @@
 
 {% block content %}
 <div class="col-md-6 offset-md-3">
+    {% if user.is_authenticated %}
+    <h1>Welcome, {{user.username}}</h1>
+    <br/>
+    {% if records %}
+    <table class="table table-striped table-hover table-bordered table-condensed ">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Username</th>
+          </tr>
+        <tbody>
+          {% for record in records %}
+          <tr>
+            <td><a href="{% url 'User' record.id %}">{{record.id}}</a></td>
+            <td>{{record.username}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <h2>No Records Found</h2>
+      {% endif %}
+    {% else %}
     <h1>Login</h1>
     <br/>
     <form method="POST" action="{% url 'home' %}">
@@ -16,6 +39,7 @@
         <button type="submit" class="btn btn-secondary">Login</button>
       </form>
     </form>
+    {% endif %}
 </div>
 {% endblock %}
     
